@@ -8,9 +8,15 @@ function setup() {
   mic.start();
 }
 
+
 function draw() {
+	if (getAudioContext().state !== 'running') {
+    getAudioContext().resume();
+	 }
+  
   background(220);
   smile(width/2, height/2,width/4);
+  
   
   noStroke();
   fill("#291720");
