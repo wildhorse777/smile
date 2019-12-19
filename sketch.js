@@ -1,5 +1,11 @@
+let mic;
+
+
+
 function setup() {
   createCanvas(windowWidth,windowHeight);
+  mic = new p5.AudioIn();
+  mic.start();
 }
 
 function draw() {
@@ -23,8 +29,9 @@ function smile(x,y,size){
   strokeWeight(size*0.1);
   
   // 눈
-  ellipse(x-size*0.3,y-size*0.1,size*0.25,size*0.25);
-  ellipse(x+size*0.3,y-size*0.1,size*0.25,size*0.25);
+  let s = mic.getLevel()* size;
+  ellipse(x-size*0.3,y-size*0.1,size*0.25+s,size*0.25+s);
+  ellipse(x+size*0.3,y-size*0.1,size*0.25+s,size*0.25+s);
   
   // 입
   arc(x,y-size*0.25,size*1.2,size*1.2,radians(45),radians(180-45));
